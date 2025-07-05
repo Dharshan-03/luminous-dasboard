@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminous Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <link rel="icon" href="data:image/png;base64,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">
+</head>
+<body class="bg-gray-900 min-h-screen flex flex-col font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-gray-300 py-4 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 md:px-8">
+      <h1 class="text-2xl md:text-3xl font-extrabold tracking-wide">
+        Luminous Dashboard
+      </h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex items-center justify-center p-4 md:p-8">
+    <div class="bg-slate-800 rounded-2xl shadow-2xl p-6 md:p-10 w-full max-w-md text-center border border-slate-700">
+      <h2 class="text-xl md:text-2xl text-cyan-400 mb-4 font-semibold">
+        Live Machine Monitoring
+      </h2>
+      <div class="my-6">
+        <p class="text-lg text-gray-300 mb-2">Machine Status:</p>
+        <p id="status" class="text-2xl font-bold text-gray-100 transition duration-500 ease-in-out">Loading...</p>
+      </div>
+      <p id="lastUpdated" class="text-sm text-gray-400">Checking Firebase...</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-gray-300 text-center text-sm py-4">
+    © 2025 JS SOLUTIONS. All rights reserved.
+  </footer>
+
+  <!-- Firebase Script -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBX-T5DvZf0Hcd4rMm8h3QertaXsPmQyN4",
+      authDomain: "luminous-dashboard-2.firebaseapp.com",
+      databaseURL: "https://luminous-dashboard-2-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "luminous-dashboard-2",
+      storageBucket: "luminous-dashboard-2.appspot.com",
+      messagingSenderId: "884434391749",
+      appId: "1:884434391749:web:dc49537175cdaabdab16ac"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const statusRef = firebase.database().ref("/machine/status");
+    const timestampRef = firebase.database().ref("/machine/timestamp");
+
+    const statusEl = document.getElementById("status");
+    const lastUpdatedEl = document.getElementById("lastUpdated");
+
+    let lastTime = 0;
+
+    function updateStatusUI(status) {
+      statusEl.textContent = status;
+      statusEl.className = "text-2xl font-bold transition duration-500 ease-in-out";
+
+      if (status === "Running") {
+        statusEl.classList.add("text-green-400");
+      } else if (status === "Idle") {
+        statusEl.classList.add("text-yellow-400");
+      } else if (status === "Stopped") {
+        statusEl.classList.add("text-gray-400");
+      } else if (status === "Offline") {
+        statusEl.classList.add("text-red-500");
+      } else {
+        statusEl.classList.add("text-pink-400");
+      }
+    }
+
+    statusRef.on("value", (snapshot) => {
+      const status = snapshot.val();
+      if (status) updateStatusUI(status);
+    });
+
+    timestampRef.on("value", (snapshot) => {
+      const time = snapshot.val();
+      if (time) {
+        lastTime = Date.now();
+        const formatted = new Date().toLocaleTimeString();
+        lastUpdatedEl.textContent = "Last updated: " + formatted;
+      }
+    });
+
+    setInterval(() => {
+      if (Date.now() - lastTime > 10000) {
+        updateStatusUI("Offline");
+        lastUpdatedEl.textContent = "No signal for 10+ seconds";
+      }
+    }, 5000);
+  </script>
+</body>
+</html>
